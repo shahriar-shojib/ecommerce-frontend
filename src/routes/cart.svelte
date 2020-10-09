@@ -4,6 +4,9 @@
 	import Checkout from './_components/Checkout.svelte';
 </script>
 
+<svelte:head>
+	<title>Cart [{$cart.length}]</title>
+</svelte:head>
 <div class="container">
 	<section class="mt-5 mb-4">
 		<div class="row">

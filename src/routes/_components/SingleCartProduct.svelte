@@ -38,7 +38,7 @@
 				<div>
 					<div class="quantity-container mb-0 w-100">
 						<button class="btn btn-warning" on:click={decrement}> - </button>
-						<input class="quantity" value={quantity} type="text" />
+						<input class="form-control" value={quantity} type="text" />
 						<button class="btn btn-warning" on:click={increment}> + </button>
 					</div>
 				</div>
@@ -54,6 +54,9 @@
 </div>
 
 <style>
+	input {
+		display: inline;
+	}
 	.quantity-container {
 		width: 200px !important;
 	}

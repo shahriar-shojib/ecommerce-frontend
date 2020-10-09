@@ -35,8 +35,18 @@ class API {
 	}
 
 	//admin methods
+	async createProduct(payload, token) {
+		return await this.adminPost('/admin/products/create', token, payload);
+	}
+	async createAdmin(username, password, token) {
+		return await this.adminPost('/admin/create', token, { username, password });
+	}
 	async createPromo(payload, token) {
 		return await this.adminPost('/admin/promos/create', token, payload);
+	}
+
+	async deletePromo(id, token) {
+		return await this.adminGet('/admin/promos/delete/' + id, token);
 	}
 
 	async promos(token) {

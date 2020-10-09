@@ -10,6 +10,9 @@
 	export let data;
 </script>
 
+<svelte:head>
+	<title>Test Ecommerce</title>
+</svelte:head>
 <div class="container">
 	<div class="row">
 		{#each data as product (product._id)}

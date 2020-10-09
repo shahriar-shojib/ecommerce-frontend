@@ -53,7 +53,12 @@
 				items: [...$cart.map(e => ({ product_id: e._id, quantity: e.quantity }))],
 				promo_code: promoCode || null,
 			}),
-		});
+		})
+			.then(res => res.json())
+			.then(() => {
+				alert('Order placed');
+				$cart = [];
+			});
 	}
 </script>
 
@@ -66,7 +71,12 @@
 			<p>Total Amount {info.total}</p>
 			<p>Total Shipping {info.shipping}</p>
 			<p>Total Discount {info.totalDiscount}</p>
-			<p>Subtotal: {info.finalTotal}</p>
+			{#if promoDiscount}
+				<p>Subtotal: {info.finalTotal - finalDiscount} <span class="badge badge-success">-{promoDiscount * 100}%</span></p>
+			{:else}
+				<p>Subtotal: {info.finalTotal}</p>
+			{/if}
+
 			<form class="form-inline" on:submit|preventDefault={handlePromo}>
 				<input type="text" class="form-control mb-2 mr-sm-2 w-30" placeholder="Promo Code" id="code" bind:value={promoCode} required />
 				<button type="submit" class="btn btn-success mb-2">Apply</button>
@@ -74,16 +84,10 @@
 					<p class="text-danger">{error}</p>
 				{/if}
 			</form>
-			{#if promoDiscount}
-				<p>Total amount after Promo Discount: {info.finalTotal - finalDiscount} <span class="text-success">({promoDiscount * 100} %)</span></p>
-			{/if}
 
 			{#if $userLoggedIn}
 				<button class="btn btn-outline-warning shadow-sm" on:click={placeOrder}> Checkout</button>
-			{:else}
-				<button class="btn btn-outline-warning shadow-sm" on:click={() => goto('/login')}>Signup</button>
-				<button class="btn btn-outline-warning shadow-sm" on:click={() => goto('/login')}>Login</button>
-			{/if}
+			{:else}<button class="btn btn-outline-warning shadow-sm" on:click={() => goto('/login')}>Signup</button>{/if}
 		{/if}
 	</div>
 </div>

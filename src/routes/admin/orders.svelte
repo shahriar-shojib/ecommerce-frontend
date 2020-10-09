@@ -1,12 +1,19 @@
+<script context="module">
+	export async function preload() {
+		const data = await this.fetch('/admin/orders.json').then(res => res.json());
+		return { data };
+	}
+</script>
+
 <script>
-	import OrderCard from './OrderCard.svelte';
+	import OrderCard from './_components/OrderCard.svelte';
 
 	export let data;
 	$: currentFilter = false;
 	$: data2 = filter(currentFilter);
 
 	function handleCancel(e) {
-		fetch('/admin/orders', {
+		fetch('/admin/orders.json', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',
@@ -19,7 +26,7 @@
 	}
 
 	function handleConfirm(e) {
-		fetch('/admin/orders', {
+		fetch('/admin/orders.json', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',
@@ -32,7 +39,7 @@
 	}
 
 	async function fetchData() {
-		data = await fetch('/admin/orders').then(res => res.json());
+		data = await fetch('/admin/orders.json').then(res => res.json());
 	}
 
 	function filter(type) {
@@ -54,6 +61,9 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Orders</title>
+</svelte:head>
 <div class="row">
 	<div class="col-md-12">
 		<div class="card shadow-sm mb-2">

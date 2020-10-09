@@ -12,7 +12,7 @@
 </script>
 
 <nav class="navbar navbar-light bg-light mb-5 shadow">
-	<a class="navbar-brand" href="/">Navbar</a>
+	<a class="navbar-brand" href="/">Test E-Commerce App</a>
 	<div>
 		<button class="btn btn-outline-dark my-2 my-sm-0 shadow-sm" type="button" on:click={() => goto('/cart')}>
 			<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -23,6 +23,6 @@
 			Cart
 			<span class="badge badge-warning ml-2">{$cart.length}</span>
 		</button>
-		{#if $adminLoggedIn}<button class="btn btn-outline-dark" on:click={() => goto('/admin')}>Admin Panel</button>{/if}
+		{#if $adminLoggedIn}<button class="btn btn-outline-dark" on:click={() => goto('/admin/orders')}>Admin Panel</button>{/if}
 	</div>
 </nav>

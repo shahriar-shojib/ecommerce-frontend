@@ -1,6 +1,6 @@
 <script>
 	import { cart } from '../../modules/app';
-	export let name, price, discount_percent, product_image, _id, shipping_charge;
+	export let name, price, discount_percent, product_image, _id, shipping_charge, __v;
 	function handleClick() {
 		cart.update(v => {
 			let existingIndex = v.findIndex(e => e._id === _id);
@@ -18,6 +18,7 @@
 						discount_percent,
 						name,
 						shipping_charge,
+						__v,
 						quantity: 1,
 					},
 				];
