@@ -58,6 +58,7 @@
 	}
 	function setFilter(value) {
 		currentFilter = value;
+		data2 = filter(currentFilter);
 	}
 </script>
 
