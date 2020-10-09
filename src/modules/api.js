@@ -105,5 +105,5 @@ class API {
 		}).then(res => res.json());
 	}
 }
-const api = new API('http://localhost:4000');
+const api = new API('https://api.shahriarshojib.com');
 export default api;

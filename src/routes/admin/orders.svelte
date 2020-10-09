@@ -9,8 +9,8 @@
 	import OrderCard from './_components/OrderCard.svelte';
 
 	export let data;
-	$: currentFilter = false;
-	$: data2 = filter(currentFilter);
+	let currentFilter = false;
+	let data2 = filter(currentFilter);
 
 	function handleCancel(e) {
 		fetch('/admin/orders.json', {
