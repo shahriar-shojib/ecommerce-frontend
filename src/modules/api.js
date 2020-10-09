@@ -5,6 +5,9 @@ class API {
 	}
 
 	//User methods
+	async checkPromo(promoCode) {
+		return await this.get(`/promo/${promoCode}`);
+	}
 	async products() {
 		return await this.get('/products');
 	}
@@ -41,7 +44,7 @@ class API {
 	}
 
 	async updateOrder(id, status, token) {
-		await this.adminPost(`/admin/orders/update/${id}`, token, { status });
+		return await this.adminPost(`/admin/orders/update`, token, { id, status });
 	}
 
 	async adminOrders(token) {
@@ -68,7 +71,7 @@ class API {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',
-				token,
+				session: token,
 			},
 			body: JSON.stringify(payload),
 		}).then(res => res.json());

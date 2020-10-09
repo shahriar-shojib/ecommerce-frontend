@@ -1,5 +1,5 @@
 <script context="module">
-	export async function preload(_page, session) {
+	export async function preload() {
 		const data = await this.fetch('/admin/products.json').then(res => res.json());
 		return { data };
 	}
@@ -7,7 +7,6 @@
 
 <script>
 	export let data;
-	console.log(data);
 </script>
 
 <div class="container">

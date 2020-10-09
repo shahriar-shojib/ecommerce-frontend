@@ -8,3 +8,9 @@ export async function get(req, res) {
 		res.end(error.message);
 	}
 }
+export async function post(req, res) {
+	const { id, status } = req.body;
+	const token = req.session.token;
+	const response = await api.updateOrder(id, status, token);
+	res.end(JSON.stringify(response));
+}

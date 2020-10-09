@@ -25,6 +25,7 @@ polka() // You can also use Express
 			session: (req, res) => {
 				return {
 					token: req.session.token,
+					userToken: req.session.userToken,
 				};
 			},
 		})

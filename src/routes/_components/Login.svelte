@@ -1,5 +1,5 @@
 <script>
-	import { adminLoggedIn } from '../../../modules/app';
+	import { userLoggedIn } from '../../modules/app';
 	import { stores } from '@sapper/app';
 	const { session } = stores();
 
@@ -7,7 +7,7 @@
 	let password;
 
 	const submit = async () => {
-		const res = await fetch('/admin/login', {
+		const res = await fetch('/login.json', {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/json',
@@ -15,15 +15,14 @@
 			body: JSON.stringify({ username, password }),
 		}).then(res => res.json());
 		if (res.token) {
-			$session.token = res.token;
-			adminLoggedIn.set(true);
+			$session.token = res.userToken;
+			userLoggedIn.set(true);
 		}
 	};
 </script>
 
 <section class="login">
 	<form class="form-signin" on:submit|preventDefault={submit}>
-		<h1 class="h2 mb-3 font-weight-normal">Please sign in</h1>
 		<label for="inputEmail" class="sr-only">Username</label>
 		<input type="text" id="inputEmail" class="form-control" placeholder="Username" required bind:value={username} />
 		<label for="inputPassword" class="sr-only">Password</label>

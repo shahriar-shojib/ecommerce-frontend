@@ -3,6 +3,7 @@ import { writable } from 'svelte/store';
 
 // const api = new API('http://localhost:4000');
 export const adminLoggedIn = writable(false);
+export const userLoggedIn = writable(false);
 export const cart = writable([]);
 
 // export default api;
